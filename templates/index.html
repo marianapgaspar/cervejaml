@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css') }}" media="screen" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js" integrity="sha512-2ySmquu6HK3CAvwLllh0R8K8buFPMZsUwWLZIlB7WW8c8ilUtoNyhsmEsQn2U0IV1USr2Oc/9DJzlr4cxAbuxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3260/3260146.png" sizes="16x16" type="image/png">
+  <script
+  src="https://code.jquery.com/jquery-3.7.0.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+  crossorigin="anonymous"></script>
+  <title>AI - Previsão de consumo</title>
+</head>
+<body>
+  <section class='content'>
+    <div class="card card-form">
+      <h1>Faça aqui a sua previsão de consumo</h1>
+      <form class="form" id="previsaoForm" method="POST" action="https://cervejaml--marianapacheco9.repl.co/predicao" >
+        <div>
+          <input type="text" required class="form-control" placeholder="Dia do ano" name="dia" >
+        <input type="text" required class="form-control" placeholder="Dia da semana" name="dia_semana">
+           <input type="text" required class="form-control" placeholder="Semana do mês" name="semana_mes">
+        </div>
+        <div>
+          
+        <input type="text" required class="form-control" placeholder="Mês do ano" name="mes_ano">
+           <input type="text" required class="form-control" placeholder="Final de semana" name="final_semana">
+        <input type="text" required class="form-control" placeholder="Temperatura média (C)" name="temp_media">
+        </div>
+       <div>
+            <input type="text" required class="form-control" placeholder="Temperatura Minima (C)" name="temp_min">
+        <input type="text" required class="form-control" placeholder="Temperatura Máxima (C)" name="temp_max">
+        <input type="text" required class="form-control" placeholder="Precipitação" name="prec">
+       </div>
+       <button type="submit" class="btn btn-info">Pesquisar</button>
+      </form>
+    </div>
+    <div class="card card-result danger result" id="result">
+          Favor inserir todos os dados para nova predição
+    </div>
+  </section>
+  <script>
+    const myForm = document.getElementById('previsaoForm');
+    myForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+       $.ajax({
+          url: 'predicao',
+          type: 'post',
+          dataType: 'json',
+          data: $(this).serialize(),
+          success: function(data) {
+           $('#result').removeClass("danger")
+           $('#result').addClass("success")
+           $('#result').html("Segundo a inteligência artificial, seu consumo será de: "+data+" litros")
+         }
+      });
+    });
+
+</script>
+</body>
+</html>
