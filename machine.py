@@ -19,10 +19,16 @@ regressao = linear_model.LinearRegression()
 regressao.fit(X_treino, y_treino)
 
 
-def predicao(dia: int, dia_semana: int, semana_mes: int, mes_ano: int,
-             final_semana: int, temp_media: int, temp_min: int, temp_max: int,
-             prec: int):
-
+def predicao(**kwargs):
+  dia = kwargs['dia']
+  dia_semana = kwargs['dia_semana']
+  semana_mes = kwargs['semana_mes']
+  mes_ano = kwargs['mes_ano']
+  final_semana = kwargs['final_semana']
+  temp_media = kwargs['temp_media']
+  temp_min = kwargs['temp_min']
+  temp_max = kwargs['temp_max']
+  prec = kwargs['prec']
   a = [
     dia, dia_semana, semana_mes, mes_ano, final_semana, temp_media, temp_min,
     temp_max, prec
