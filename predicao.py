@@ -1,22 +1,7 @@
-import pandas
-from sklearn import linear_model
-from sklearn.model_selection import train_test_split
 import numpy as np
+from maquina import exportaModeloReutilizado
 
-tabela = pandas.read_csv("dados.csv")
-
-X_treino, X_teste, y_treino, y_teste = train_test_split(
-  tabela[[
-    'Dia', 'Dia da Semana', 'Semana do mês', 'Mes do ano', 'Final de Semana',
-    'Temperatura Media (C)', 'Temperatura Minima (C)',
-    'Temperatura Maxima (C)', 'Precipitacao (mm)'
-  ]].values,
-  tabela[['Consumo de cerveja (litros)']].values,
-  test_size=0.15,
-  random_state=40)
-
-regressao = linear_model.LinearRegression()
-regressao.fit(X_treino, y_treino)
+regressao = exportaModeloReutilizado()
 
 
 def predicao(**kwargs):

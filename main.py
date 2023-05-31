@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
-from machine import predicao
+from predicao import predicao
 import datetime
+from consumoDb import insereDados
 
 app = Flask(__name__)
 
@@ -29,16 +30,30 @@ def verificaPredicao():
   temp_min = request.form['temp_min']
   temp_max = request.form['temp_max']
   prec = request.form['prec']
-  resultado = predicao(dia=dia,
-                       dia_semana=dia_semana,
-                       semana_mes=semana_mes,
-                       mes_ano=mes_ano,
-                       final_semana=final_semana,
-                       temp_media=temp_media,
-                       temp_min=temp_min,
-                       temp_max=temp_max,
-                       prec=prec)
-  return '{:.2f}'.format(float(resultado))
+
+  resultadoPredicao = predicao(dia=dia,
+                               dia_semana=dia_semana,
+                               semana_mes=semana_mes,
+                               mes_ano=mes_ano,
+                               final_semana=final_semana,
+                               temp_media=temp_media,
+                               temp_min=temp_min,
+                               temp_max=temp_max,
+                               prec=prec)
+
+  insereDados(data=request.form['date'],
+              dia_ano=dia,
+              dia_semana=dia_semana,
+              semana_mes=semana_mes,
+              mes_ano=mes_ano,
+              final_semana=final_semana,
+              temp_media=temp_media,
+              temp_min=temp_min,
+              temp_max=temp_max,
+              prec=prec,
+              consumo=resultadoPredicao)
+
+  return '{:.2f}'.format(float(resultadoPredicao))
 
 
 app.run(host='0.0.0.0', port=81)
