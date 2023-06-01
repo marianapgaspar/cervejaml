@@ -9,8 +9,8 @@ Este projeto é um estudo que utiliza aprendizado de máquina no modelo de regre
   - scikit-learn (sklearn): Biblioteca de aprendizado de máquina utilizada para implementar o modelo de regressão linear.
   - pandas: Biblioteca utilizada para a manipulação e análise de dados.
   - matplotlib: Biblioteca utilizada para a visualização dos dados e resultados.
-  - sqlite: Biblioteca utilizada para a integração com um banco de dados para a inteligência artificial.
-  - flask: Biblioteca utilizada para criar a parte web do projeto.
+  - SQLite3: Biblioteca utilizada para a integração com um banco de dados para a inteligência artificial.
+  - Flask: Biblioteca utilizada para a comunicação da API entre o backend e frontent.
   - HTML, JavaScript e CSS: Tecnologias web utilizadas para desenvolver a interface do projeto.
 
 ## Acesso ao Projeto
