@@ -16,3 +16,9 @@ Este projeto é um estudo que utiliza aprendizado de máquina no modelo de regre
 ## Acesso ao Projeto
 
 O projeto está disponível no Replit, um ambiente de desenvolvimento online, o que significa que você não precisa instalar nada em sua máquina para executá-lo. Você pode acessar todo o código e executar o projeto através deste link: [Projeto de Predição de Consumo de Cerveja no Replit](https://replit.com/@MarianaPacheco9/cervejaml).
+
+## Fotos
+![1](./imagensFinais/1.PNG)
+![2](./imagensFinais/2.PNG)
+![3](./imagensFinais/3.PNG)
+![4](./imagensFinais/4.PNG)
