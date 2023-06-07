@@ -48,6 +48,7 @@ body {
   line-height: 1.5;
   border: solid #c3c3c3 1px;
   border-radius: 2px;
+  width: 100%;
 }
 .input-group{
   margin:0 1rem 1rem 1rem;
@@ -88,6 +89,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   width: 3rem;
+  margin: 1rem;
 }
 .btn-send{
   width: 12rem;
@@ -96,6 +98,13 @@ body {
     background: #0b5ed7;
     border:1px solid #0b5ed7;
     color:#fff
+}
+.btn-outline {
+  padding: 0.5rem;
+  border-radius: 7px;
+  border:1px solid #fff;
+  background: #ccc;
+  cursor: pointer;
 }
 .btn:hover {
     padding: 0.5rem;
@@ -123,10 +132,14 @@ body {
   flex-direction: column;
 }
 .sumary {
-  font-size: 12px;
+  font-size: 16px;
   text-align: justify;
-  margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 0 2rem 0 2rem;
+}
+.titulo-info {
+  font-size: 13px;
+  color: #686262;
 }
 @media only screen and (max-width: 600px) {
     .content {

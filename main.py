@@ -26,9 +26,9 @@ def verificaPredicao():
     final_semana = 1
   else:
     final_semana = 0
-  temp_media = request.form['temp_media']
   temp_min = request.form['temp_min']
   temp_max = request.form['temp_max']
+  temp_media = (float(temp_min) + float(temp_max)) / 2
   prec = request.form['prec']
 
   resultadoPredicao = predicao(dia=dia,

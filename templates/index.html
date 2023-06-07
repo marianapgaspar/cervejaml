@@ -19,9 +19,9 @@
   <section class='content'>
     <!-- Fomulário -->
     <div class="card card-form">
-      <h1>Faça aqui a sua previsão de consumo de cerveja</h1>
+      <h1>Previsão de consumo de cerveja para sua choperia</h1>
       <div class="sumary">
-        Aqui está um programa de inteligencia artificial que irá predizer o consumo de cerveja em litros conforme os campos inseridos. Para alimentar o aprendizado de máquina, foi utilizada uma tabela de dados fornecida com 365 dados ao total, caso tenha interesse em entender a análise e o código, veja mais abaixo.
+           Escolha a data de previsão, a temperatura máxima e mínima e a preciptação de chuva para descobrir qual consumo será realizado na sua choperia.
       </div>
       <form class="form" id="previsaoForm" method="POST" action="https://cervejaml--marianapacheco9.repl.co/predicao" >
         <div>
@@ -31,31 +31,29 @@
             <div class="feedback" id="date"></div>
           </div>
           <div class="input-group">
-            <label class="label-control" for="temp_media">Temperatura média (C)</label>
-            <input type="number" required class="form-control" step=".01" placeholder="Temperatura média (C)" name="temp_media">
-            <div class="feedback" id="temp_media"></div>
+            <label class="label-control" for="prec">Precipitação</label>
+              <input type="range" class="form-control" step=".1" value="5" min="0" max="99" name="prec" oninput="this.nextElementSibling.value = this.value">
+              <output>5</output>
+            <div class="feedback" id="prec"></div>
           </div>
         </div>
         <div>
           <div class="input-group">
             <label class="label-control" for="temp_min">Temperatura Min (C)</label>
-            <input type="number" step=".01" required class="form-control" placeholder="Temperatura Minima (C)" name="temp_min">
+            <input type="range" class="form-control" step=".1" value="15" min="5" max="28" 
+ name="temp_min" oninput="this.nextElementSibling.value = this.value">
+              <output>15</output>
             <div class="feedback" id="temp_min"></div>
           </div>
-           
           <div class="input-group">
             <label class="label-control" for="temp_max">Temperatura Max (C)</label>
-            <input type="number" required step=".01" class="form-control" placeholder="Temperatura Máxima (C)" name="temp_max">
+            <input type="range" class="form-control" step=".1" value="25" min="10" max="38" 
+ name="temp_max" oninput="this.nextElementSibling.value = this.value">
+              <output>25</output>
             <div class="feedback" id="temp_max"></div>
             </div>
         </div>
-        <div>
-          <div class="input-group">
-            <label class="label-control" for="prec">Precipitação</label>
-            <input type="number" required step=".01" class="form-control" placeholder="Precipitação" name="prec">
-            <div class="feedback" id="prec"></div>
-          </div>
-      
+        <div>      
           <button type="submit" class="btn btn-info btn-send form-control">Pesquisar</button>
         </div>
       </form>
@@ -67,11 +65,14 @@
     </div>
 
     <!-- Estudos -->
-    <div class="card card-button">
+    <!-- <div class="card card-button"> -->
       <div>
-       <button class="btn" id="show-info">
+       <button class="btn btn-outline" id="show-info">
          +
-       </button> Veja as analises de estudo feito sobre os dados
+       </button> 
+        <span class="titulo-info">
+          A previsão é gerada a partir da inteligência aritifical, veja aqui seu estudo.
+        </span> 
       </div>
       <div class="info-content" style="display: none;">
         <div>
@@ -196,7 +197,8 @@ Vemos que existe uma consideravel diferença entre os dias de semana e os finais
 
       
       </div>
-    </div>
+    
+    <!-- </div> -->
   </section>
   
   <!-- Script -->
@@ -221,20 +223,8 @@ Vemos que existe uma consideravel diferença entre os dias de semana e os finais
     
     validateSave = () => {
       result = true;
-      if ($("[name=temp_media]").val() < 10 || $("[name=temp_media]").val() >  30){
-        $("#temp_media").html("Min permitido é 10 e máximo permitido é 30");
-        result = false;
-      }
       if ($("[name=temp_max]").val() < 10 || $("[name=temp_max]").val() >  38){
         $("#temp_max").html("Min permitido é 10 e máximo permitido é 38");
-        result = false;
-      }
-      if ($("[name=temp_min]").val() < 5 || $("[name=temp_min]").val() >  28){
-        $("#temp_min").html("Min permitido é 5 e máximo permitido é 28");
-        result = false;
-      }
-      if ($("[name=prec]").val() < 1 || $("[name=prec]").val() >  99){
-        $("#prec").html("Min permitido é 1 e máximo permitido é 99");
         result = false;
       }
       return result;
