@@ -56,4 +56,4 @@ def verificaPredicao():
   return '{:.2f}'.format(float(resultadoPredicao))
 
 
-app.run(host='0.0.0.0', port=81)
+app.run(host='0.0.0.0', port=5000)
