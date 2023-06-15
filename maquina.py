@@ -3,7 +3,7 @@ from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 import pickle as pickle
 
-nomeArquivo = '/var/www/html/cervejaml/modeloFinalizado.sav'
+nomeArquivo = '/var/www/cervejaml/modeloFinalizado.sav'
 
 
 def criaModeloDoZero():
